@@ -21,19 +21,21 @@ namespace eCommerceApiWithAdoNet.Repositories
             return _db.FirstOrDefault(a => a.Id == id);
         }
 
-        public void InsertUsuario()
+        public void InsertUsuario(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _db.Add(usuario);
         }
 
         public void UpdateUsuario(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _db.Remove(_db.FirstOrDefault(a => a.Id == usuario.Id));
+
+            _db.Add(usuario);
         }
 
         public void DeleteUsuario(int id)
         {
-            throw new NotImplementedException();
+            _db.Remove(_db.FirstOrDefault(a => a.Id == id));
         }
     }
 }
